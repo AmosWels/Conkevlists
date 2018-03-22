@@ -17,7 +17,7 @@ $address_citation_Taken = TPcitationProfilefieldsMappings::model()->findAll("sta
 
 $address_citation_inbox = TPcitationProfilefieldsMappings::model()->findAll("status = 'A' and profilefield = '6'"); // getting new citations
 
-$rejectedplaceOfBirth = TPersonAddress::model()->findAll("maker = '$userid' and status = 'R'"); // getting rejected address attributes
+$rejectedplaceOfBirth = TPersonplaceOfBirth::model()->findAll("maker = '$userid' and status = 'R'"); // getting rejected address attributes
 ?>
 
 <div class="search-header">
@@ -87,11 +87,11 @@ $rejectedplaceOfBirth = TPersonAddress::model()->findAll("maker = '$userid' and 
                                             $Tnationalityname = $Tnationalityvalue->native;
                                             ?>
                                             <?php if($Tstatus=='C' ){?>
-                                        <tr class="green-text" onclick="location.href = '<?php echo @Yii::app()->baseUrl; ?>/index.php?r=dataEntry/Entrant/address/search&id=<?php echo $code->encode($Trecord->id); ?>'">
+                                        <tr class="green-text" onclick="location.href = '<?php echo @Yii::app()->baseUrl; ?>/index.php?r=dataEntry/Entrant/placeOfBirth/search&id=<?php echo $code->encode($Trecord->id); ?>'">
                                         <?php }elseif($Tstatus=='L'){ ?>
-                                         <tr class="red-text" onclick="location.href = '<?php echo @Yii::app()->baseUrl; ?>/index.php?r=dataEntry/Entrant/address/search&id=<?php echo $code->encode($Trecord->id); ?>'">   
+                                         <tr class="red-text" onclick="location.href = '<?php echo @Yii::app()->baseUrl; ?>/index.php?r=dataEntry/Entrant/placeOfBirth/search&id=<?php echo $code->encode($Trecord->id); ?>'">   
                                         <?php } else{ ?>
-                                         <tr onclick="location.href = '<?php echo @Yii::app()->baseUrl; ?>/index.php?r=dataEntry/Entrant/address/search&id=<?php echo $code->encode($Trecord->id); ?>'">
+                                         <tr onclick="location.href = '<?php echo @Yii::app()->baseUrl; ?>/index.php?r=dataEntry/Entrant/placeOfBirth/search&id=<?php echo $code->encode($Trecord->id); ?>'">
                                         <?php } ?>
                                                 <td><?php echo $Tcitation; ?></td>
                                                 <td><?php echo $TpersonName; ?></td>
@@ -151,7 +151,7 @@ $rejectedplaceOfBirth = TPersonAddress::model()->findAll("maker = '$userid' and 
 //                                            include 'modals/sorry.php';
                                         } } else{
                                         ?> 
-                                    <code class="red white-text" style="margin-left: 500px;">No New Citations for Address</code>
+                                    <code class="red white-text" style="margin-left: 500px;">No New Citations for Place of Birth</code>
                                         <?php }?>
                                     </tbody>
                                 </table>
@@ -164,7 +164,7 @@ $rejectedplaceOfBirth = TPersonAddress::model()->findAll("maker = '$userid' and 
                                 <table id="example3" class="display responsive-table datatable-example">
                                     <thead>
                                             <tr>    
-                                            <th>Address City</th>
+                                            <th>Place City</th>
                                             <th>Country</th>
                                             <th>Person</th>
                                             <th>Started On</th>
@@ -173,8 +173,8 @@ $rejectedplaceOfBirth = TPersonAddress::model()->findAll("maker = '$userid' and 
                                     <tfoot><tr></br></tr></tfoot>
                                     <tbody>
                                         <?php
-                                        if (!empty($rejectedaddress)) {    
-                                        foreach ($rejectedaddress as $record) {
+                                        if (!empty($rejectedplaceOfBirth)) {    
+                                        foreach ($rejectedplaceOfBirth as $record) {
                                             $cityresult = $record->city;
                                             $personr = $record->person;
                                             $personValuer = Tperson::model()->findByPk($personr);

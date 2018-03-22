@@ -21,7 +21,7 @@ $citation_id = $personcite_attr_Value->citation;
 //$organisation = TOrganization::model()->findbypk($organ);
 
 $person_cite = TPersonCitation::model()->findbypk($citation_id);
-$personid = $person_cite->person;
+$personid = $personcite_attr_Value->person;
 $personValue = TPerson::model()->findByPk($personid);
 $personName = $personValue->name;
 

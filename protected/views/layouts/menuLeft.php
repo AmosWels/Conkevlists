@@ -26,7 +26,7 @@
         $research_status = '';
         
 //      Data Entry menu
-        $dataEntry_Entrant_array = array("userType/MakerDataEntry","dataEntry/Entrant/panel","dataEntry/Entrant/people","dataEntry/Entrant/employment","dataEntry/Entrant/politicalassignment","dataEntry/Entrant/address","dataEntry/Entrant/dateOfBirth");
+        $dataEntry_Entrant_array = array("userType/MakerDataEntry","dataEntry/Entrant/panel","dataEntry/Entrant/people","dataEntry/Entrant/employment","dataEntry/Entrant/politicalassignment","dataEntry/Entrant/address","dataEntry/Entrant/placeOfBirth");
         $dataEntry_Entrant_color = '';
         $dataEntry_maker_array = array("dataEntry/maker/panel","dataEntry/maker/organisation","dataEntry/maker/people");
         $dataEntry_maker_color = '';
