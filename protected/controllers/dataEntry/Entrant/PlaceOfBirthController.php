@@ -6,6 +6,26 @@ class PlaceOfBirthController extends Controller
 	{
 		$this->render('index');
 	}
+        
+        public function actionIndex_new()
+	{
+            $userid = Yii::app()->user->userid;
+            //    take up citation
+        if (isset($_POST['record-id'])) {
+            $record_id = $_POST['record-id'];
+            $model = TPcitationProfilefieldsMappings::model()->findByPk($record_id);
+            $model->status = 'T';
+            $model->data_entrant = $userid;
+            if ($model->update()) {
+                //log success
+            } else {
+                //log error
+            }
+            $this->redirect(array('dataEntry/Entrant/placeOfBirth/index_new'));
+        }
+
+		$this->render('index_new');
+	}
 
 	// Uncomment the following methods and override them if needed
 	/*
