@@ -30,7 +30,7 @@
         $dataEntry_Entrant_color = '';
         $dataEntry_maker_array = array("dataEntry/maker/panel","dataEntry/maker/organisation","dataEntry/maker/people");
         $dataEntry_maker_color = '';
-        $dataEntry_supervisor_array = array("dataEntry/supervisor/panel","dataEntry/supervisor/employment","dataEntry/supervisor/politicalassignment","dataEntry/supervisor/politicalassignment/supervise","dataEntry/supervisor/employment/supervise","dataEntry/supervisor/address");
+        $dataEntry_supervisor_array = array("dataEntry/supervisor/panel","dataEntry/supervisor/employment","dataEntry/supervisor/politicalassignment","dataEntry/supervisor/politicalassignment/supervise","dataEntry/supervisor/employment/supervise","dataEntry/supervisor/address","dataEntry/supervisor/placeOfBirth");
         $dataEntry_supervisor_color = '';
         $dataEntry_status = '';
         

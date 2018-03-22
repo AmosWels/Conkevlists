@@ -108,7 +108,6 @@ class PlaceOfBirthController extends Controller
         $query = NULL;
         
         if (isset($_POST['personid'])) {
-//            $citationmapped = $_POST['citationid'];
             $recordmapped = $_POST['recordid'];
             $code = new Encryption;
             $coded_id = $code->encode($recordmapped);
@@ -116,6 +115,7 @@ class PlaceOfBirthController extends Controller
             $model = new TPersonplaceOfBirth();
             
             $model->city = $_POST['city'];
+            $model->country = $_POST['country'];
             $model->otherdetails = $_POST['details'];
             $model->person = $_POST['personid'];
             $model->citation = $_POST['citationid'];

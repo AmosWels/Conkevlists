@@ -35,7 +35,7 @@ class TPersonplaceOfBirth extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('city, country, otherdetails, citation, person, createdon, maker', 'required'),
+			array('city, country, citation, person, maker', 'required'),
 			array('citation, person', 'numerical', 'integerOnly'=>true),
 			array('city', 'length', 'max'=>255),
 			array('country', 'length', 'max'=>2),

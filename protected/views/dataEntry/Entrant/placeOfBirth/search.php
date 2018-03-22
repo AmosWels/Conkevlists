@@ -154,19 +154,19 @@ $gendername1 = substr($gendername, 0, 20) . '...';} else{ $gendername1 = $gender
                                             foreach($existingpersonplaceOfBirth as $existingplaceOfBirth){
 //                                                getting employment position id
                                             $city= $existingplaceOfBirth->city;
-                                            $town= $existingplaceOfBirth->town;
+                                            $otherdetails= $existingplaceOfBirth->otherdetails;
                                             $country= $existingplaceOfBirth->country; //getting country value
                                             $countryValue = TCountry::model()->findByAttributes(array('code' => $country));
                                             $countryname = $countryValue->name;
                                             $status = $existingplaceOfBirth->status; ?>
                                             
-                                       <?php switch ($status){case 'A':$addresscolor = 'black-text'; break; case 'D' : $addresscolor = 'red-text'; } ?>
-                                <p><span><?php echo $t . '. '; ?></span><span class="<?php echo $addresscolor; ?>"><?php echo $city; ?></span> &rtrif; <span class="<?php echo $addresscolor; ?>"><?php echo $town; ?></span>
-                                    &rtrif; <span class="<?php echo $addresscolor; ?>"><?php echo $countryname; ?></span></p>
+                                       <?php switch ($status){case 'A':$placeOfBirthcolor = 'black-text'; break; case 'D' : $placeOfBirthcolor = 'red-text'; } ?>
+                                <p><span><?php echo $t . '. '; ?></span><span class="<?php echo $placeOfBirthcolor; ?>"><?php echo $countryname; ?></span> &rtrif; <span class="<?php echo $placeOfBirthcolor; ?>"><?php echo $city; ?></span>
+                                    &rtrif; <span class="<?php echo $placeOfBirthcolor; ?>"><?php echo $otherdetails; ?></span></p>
                                        
                                     <?php $t++;   }
                                      } else{?>
-                                <code class="red-text center" style="margin-top: 80px; margin-left: 130px;">! -------- No Address Record(s) were found -------- !</code>
+                                <code class="red-text center" style="margin-top: 80px; margin-left: 130px;">! -------- No Existing Place Of Birth Record(s) were found -------- !</code>
                                     <?php } ?>
                             </div>
                         </div>
@@ -180,42 +180,27 @@ $gendername1 = substr($gendername, 0, 20) . '...';} else{ $gendername1 = $gender
                                 if (strlen($searched) > $min_length) {
                                     if ($results != '') {
                                         foreach ($results as $record) { 
-//                                            getting ownership
-                                            $ownershipresult = $record->ownership;
-                                            $ownershipValue = TAddressownership::model()->findByPk($ownershipresult);
-                                            $ownershipname = $ownershipValue->name;
-//                                            getting type 
-                                            $typeresult = $record->type;
-                                            $typeValue = TAddresstype::model()->findByPk($typeresult);
-                                            $typename = $typeValue->name;
                                             $cityresult = $record->city;
-                                            $townresult= $record->town;
-                                            //getting country value
                                             $countryresult= $record->country; 
                                             $countryValueresult = TCountry::model()->findByAttributes(array('code' => $countryresult));
                                             $countrynameresult = $countryValueresult->name;
-                                            $streetnameresult = $record->street_name;
+                                            $otherdetailsresult = $record->otherdetails;
                                             $statusresult = $record->status;
                                             ?>
-                                <span <?php if(strlen($cityresult)>15 || strlen($countrynameresult)>15){ ?>class="row s12 modal-trigger" href='#viewaddress<?php echo $record->id; ?>' onmouseover="this.style.color = 'orange';"  onmouseout="this.style.color = '';" <?php } else { ?> class="row s12"<?php } ?>>
-                                                <div class="col s2"><span>City</span> &rtrif;
+                                <span <?php if(strlen($cityresult)>15 || strlen($countrynameresult)>15 || strlen($otherdetailsresult) > 25){ ?>class="row s12 modal-trigger" href='#viewpob<?php echo $record->id; ?>' onmouseover="this.style.color = 'orange';"  onmouseout="this.style.color = '';" <?php } else { ?> class="row s12"<?php } ?>>
+                                                <div class="col s4"><span>City</span> &rtrif;
                                                     <span class="black-text"><?php if (strlen($cityresult) > 15){ $cityresult1 = substr($cityresult, 0, 15) . '...';?>
                                                     <?php echo $cityresult1; ?><?php } else{ echo $cityresult;} ?></span></div>
-                                                <div class="col s2"><span>Town</span> &rtrif; 
-                                                    <span class="black-text"><?php if (strlen($townresult) > 15){ $townresult1 = substr($townresult, 0, 15) . '...';?>
-                                                    <?php echo $townresult1; ?><span><?php } else{ echo $townresult;} ?></span></span></div>
-                                                <div class="col s2"><span>Country</span> &rtrif; 
+                                                <div class="col s4"><span>Country</span> &rtrif; 
                                                     <span class="black-text"><?php if (strlen($countrynameresult) > 15){ $countrynameresult1 = substr($countrynameresult, 0, 15) . '...';?>
                                                     <?php echo $countrynameresult1; ?><span><?php } else{ echo $countrynameresult;} ?></span></span></div>
-                                                <div class="col s2"><span>Street Name</span> &rtrif; 
-                                                      <span class="black-text"><?php if (strlen($streetnameresult) > 15){ $streetnameresult1 = substr($streetnameresult, 0, 15) . '...';?>
-                                                    <?php echo $streetnameresult1; ?><span><?php } else{ echo $streetnameresult;} ?></span></span></div>
-                                                <div class="col s2"><span>Start Date</span> &rtrif; <span class="black-text"><?php echo $record->start_date; ?></span></div>
-                                                <div class="col s2"><span>End Date</span> &rtrif; <span class="black-text"><?php echo $record->end_date; ?></span></div>
+                                                <div class="col s4"><span>Other Details</span> &rtrif; 
+                                                    <span class="black-text"><?php if (strlen($otherdetailsresult) > 25){ $otherdetailsresult1 = substr($otherdetailsresult, 0, 25) . '...';?>
+                                                    <?php echo $otherdetailsresult1; ?><span><?php } else{ echo $otherdetailsresult;} ?></span></span></div>
                                             </span>
                                             <hr style="border-color: black; border-style: dotted; border-width: 0.5px 0; margin: 0px 0; margin-top: 5px;">
                                             <?php          
-                                        include 'modals/viewsearchedaddress.php';
+                                        include 'modals/viewsearchedplaceOfBirth.php';
                                         }
                                         ?>
 

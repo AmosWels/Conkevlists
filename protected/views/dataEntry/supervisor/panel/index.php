@@ -66,9 +66,39 @@
                             </a>
                         </div>
                     </div>
+                    <div class="row s12">
+                        <div class="col m4">
+                            <a style="font-size: 24px; font: small-caption; font-size: large; font-weight: 400; color: black;" href="<?php echo @Yii::app()->baseUrl; ?>/index.php?r=dataEntry/supervisor/placeOfBirth"
+                               onmouseover="this.style.color = 'orange';"  onmouseout="this.style.color = 'black';">
+                            <div class="card">
+                                <div class="card-content z-depth-3" >
+                                    <span>People Place Of Birth</span><i class="material-icons right">palette</i><br><br>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+<!--                        <div class="col m4">
+                            <a style="font-size: 24px; font: small-caption; font-size: large; font-weight: 400; color: black;" href="<?php echo @Yii::app()->baseUrl; ?>/index.php?r=dataEntry/supervisor/employment"
+                               onmouseover="this.style.color = 'orange';"  onmouseout="this.style.color = 'black';">
+                            <div class="card">
+                                <div class="card-content z-depth-3" >
+                                    <span>People Employment</span><i class="material-icons right">people</i><br><br>
+                                </div>
+                            </div>
+                            </a>
+                        </div>-->
+<!--                        <div class="col m4">
+                            <a style="font-size: 24px; font: small-caption; font-size: large; font-weight: 400; color: black;"  href="<?php echo @Yii::app()->baseUrl; ?>/index.php?r=dataEntry/supervisor/address"
+                               onmouseover="this.style.color = 'orange';"  onmouseout="this.style.color = 'black';">
+                            <div class="card">
+                                <div class="card-content z-depth-3" >
+                                    <span>People Address</span><i class="material-icons right">place</i><br><br>
+                                </div>
+                            </div>
+                            </a>
+                        </div>-->
+                    </div>
                 </div>
-                
-                
             </div>
         </div>
     </div>
